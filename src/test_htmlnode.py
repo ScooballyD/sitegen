@@ -37,7 +37,7 @@ class TestLeafNode(unittest.TestCase):
         node = LeafNode(None, "Plain Text")
         node.to_html()
     def test_no_value(self):
-        node = LeafNode("p","")
+        node = LeafNode("p", None)
         self.assertRaises(ValueError, node.to_html)
 
 class TestParentNode(unittest.TestCase):
