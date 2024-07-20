@@ -7,7 +7,9 @@ from textnode import (TextNode,
                       extract_markdown_links, 
                       split_nodes_link, 
                       split_nodes_image,
-                      text_to_textnodes)
+                      text_to_textnodes
+                      )
+
 
 
 class TestTextNode(unittest.TestCase):
@@ -185,7 +187,7 @@ class TestSplitImageLink(unittest.TestCase):
         self.assertEqual(split_nodes_image(nodes2), test2)
 
 class TestTexttoTextnodes(unittest.TestCase):
-    def variety_test(self):
+    def test_variety(self):
         node = [TextNode("This is **bold** text with an *italic* word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://scoob.com)", "text")]
         test = [
             TextNode("This is ", "text"),
@@ -200,7 +202,7 @@ class TestTexttoTextnodes(unittest.TestCase):
             TextNode("link", "link", "https://scoob.com"),
         ]
         self.assertEqual(text_to_textnodes(node), test)
-    def invalid_markdown_test(self):
+    def test_invalid_markdown(self):
         node = [TextNode("This is *bold** text with an *italic* word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://scoob.com)", "text")]
         node2 = [TextNode("This is **bold** text with an italic* word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://scoob.com)", "text")]
         node3 = [TextNode("This is **bold** text with an *italic* word and a code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://scoob.com)", "text")]
@@ -209,6 +211,9 @@ class TestTexttoTextnodes(unittest.TestCase):
             text_to_textnodes(node2)
             text_to_textnodes(node3)
     
+#======================
+
+
 
 if __name__ == "__main__":
     unittest.main()

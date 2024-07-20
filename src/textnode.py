@@ -88,4 +88,3 @@ def text_to_textnodes(text):
     result = split_nodes_link(result)
     return result
 
-        

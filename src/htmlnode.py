@@ -49,3 +49,7 @@ class ParentNode(HTMLNode):
         for child in self.children:
             childsum = childsum + child.to_html()
         return f"<{self.tag}{self.props_to_html()}>{childsum}</{self.tag}>"
+
+def make_parent(parent, children):
+    return ParentNode(parent, children)
+
